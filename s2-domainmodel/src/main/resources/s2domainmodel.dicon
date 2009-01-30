@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN"
+	"http://www.seasar.org/dtd/components24.dtd">
+<components>
+	<include path="convention.dicon"/>
+	
+	<component class="org.seasar.domainmodel.infra.DomainCreator"/>
+	<component name="s2DomainModelInterceptor"
+		class="org.seasar.domainmodel.infra.S2DomainModelInterceptor"/>
+	<component name="domainCustomizer"
+		class="org.seasar.framework.container.customizer.AspectCustomizer">
+		<initMethod name="addInterceptorName">
+			<arg>"s2DomainModelInterceptor"</arg>
+		</initMethod>
+	</component>
+</components>

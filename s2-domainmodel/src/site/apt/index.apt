@@ -1,0 +1,33 @@
+	----------
+	Top
+	----------
+
+S2DomainModel
+
+	S2DomainModelは、Seasar2でドメインモデルやDDDの実装をサポートするためのライブラリです。
+	
+	ダウンロードはこちらから↓
+	
+	* {{http://sourceforge.net/project/showfiles.php?group_id=202205&package_id=275007}}
+	
+* 使い方
+	
+	Maven2を使っている場合は、pom.xmlに以下のように依存性を追加します。
+	
+--------------------------------------------------------------------------------
+[pom.xml]
+  <repositories>
+    <repository>
+      <id>ouobpo.sourceforge.net</id>
+      <url>http://ouobpo.sourceforge.net/maven/</url>
+    </repository>
+  </repositories>
+  ...
+  <dependencies>
+    <dependency>
+      <groupId>org.seasar.domainmodel</groupId>
+      <artifactId>s2-domainmodel</artifactId>
+      <version>0.1</version>
+    </dependency>
+  </dependencies>
+--------------------------------------------------------------------------------

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="S2DomainModel">
+  <bannerLeft>
+    <name>S2DomainModel</name>
+  </bannerLeft>
+  <publishDate format="yyyy/MM/dd" />
+  <poweredBy>
+    <logo name="SourceForge.net" href="http://sourceforge.net"
+      img="http://sflogo.sourceforge.net/sflogo.php?group_id=202205&amp;type=1" />
+  </poweredBy>
+  <body>
+    <links>
+      <item name="Ouobpo" href="http://ouobpo.sourceforge.net" />
+    </links>
+    <menu name="MENU">
+      <item name="S2DomainModel" href="index.html" />
+    </menu>
+  </body>
+</project>
