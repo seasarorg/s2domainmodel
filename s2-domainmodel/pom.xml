@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.seasar.domainmodel</groupId>
   <artifactId>s2-domainmodel</artifactId>
   <packaging>jar</packaging>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.1</version>
 
   <name>S2DomainModel</name>
   <description>Domain Model pattern and DDD support on Seasar2 container.</description>
@@ -147,9 +146,9 @@
   </repositories>
 
   <scm>
-    <connection>scm:svn:https://www.seasar.org/svn/sandbox/s2domainmodel/trunk/s2-domainmodel</connection>
-    <developerConnection>scm:svn:https://www.seasar.org/svn/sandbox/s2domainmodel/trunk/s2-domainmodel</developerConnection>
-    <url>http://svn.seasar.org/browse/?root=sandbox.s2domainmodel</url>
+    <connection>scm:svn:https://www.seasar.org/svn/sandbox/s2domainmodel/tags/s2-domainmodel-0.1.1</connection>
+    <developerConnection>scm:svn:https://www.seasar.org/svn/sandbox/s2domainmodel/tags/s2-domainmodel-0.1.1</developerConnection>
+    <url>http://svn.seasar.org/browse/?root=sandbox.s2domainmodel/tags/s2-domainmodel-0.1.1?root=sandbox.s2domainmodel</url>
   </scm>
 
   <issueManagement>
