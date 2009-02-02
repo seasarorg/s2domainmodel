@@ -1,0 +1,59 @@
+	----------
+	使い方
+	----------
+
+使い方
+	
+	S2DomainModelのアイデアは単純です。DDDに従えば、ドメインオブジェクトのライフサイクルは{{{http://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap2.html#Factories}ファクトリ}}と{{{http://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap2.html#Repositories}リポジトリ}}により管理されます。ドメインオブジェクトがメモリ上に作られるのは、ファクトリかリポジトリ中でインスタンスが生成されるタイミングです。そこで、ファクトリ／リポジトリのメソッドにインターセプタを付加し、メソッドの戻り値（ドメインオブジェクト）に対してDIだけを行なう、というのがS2DomainModelのアイデアです。
+	
+	S2Dao（Tiger）と同じ要領で、ファクトリ／リポジトリには「@LifeCycleObject」アノテーション、外部リソースをDIしたいドメインオブジェクトには「@OutsideAggregate」アノテーションを宣言します。
+	
+--------------------------------------------------------------------------------
+@OutsideAggregate
+public class Employee {
+  private OuterResource fOuterResource; // DIされる外部リソース
+  public void setOuterResource(OuterResource resource) { ... }
+  ...
+}
+
+@LifeCycleObject
+public class EmployeeFactory {
+  public Employee create() { ... }
+  ...
+}
+
+@LifeCycleObject
+public class EmployeeRepository {
+  public Employee findById(Long id) { ... }
+  ...
+}
+--------------------------------------------------------------------------------
+	
+	「@LifeCycleObject」の付いたクラスは、Service／Logicクラスと同じように、SMARTデプロイにより起動時に自動的にDI 登録されます。スコープは「singleton」です。「@OutsideAggregate」のクラスは、起動時に「outer」スコープでコンポーネント定義だけがコンテナに登録されます。インスタンスはファクトリ／リポジトリ内でアプリ開発者が自由に生成でき、S2DomainModelインターセプタによりファクトリ／リポジトリのメソッド通過時にDIだけが適用されます。リポジトリはコンテナ管理下に置かれるので、その中でS2DaoやS2JDBC、S2Hibernateを使ってデータアクセス層を自由に実装します。
+	
+	（S2DomainModelは現時点ではSMARTデプロイを前提にしており、ドメインオブジェクト、ファクトリ、リポジトリはすべてルートパッケージ以下の「domain」パッケージ下に置く決まりにしています）
+	
+	ファクトリ／リポジトリのメソッド戻り値には、配列やリストを返すことも可能です。その場合、配列、リストの全要素がDIされます（要素数が非常に多い場合はパフォーマンスに問題が出るかもしれません）。ただし、現時点の制限として、戻り値の{{{http://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap2.html#Aggregates}集約ルート}}だけがDI対象となり、その下にさらに「@OutsideAggregate」なオブジェクトが入れ子状に含まれていても、そちらはDI対象となりません（中身を外部から隠蔽するという集約の性質を考えると、これが仕様でいいかもしれません）。
+	
+* Mavenでのpom.xml設定
+	
+	Maven2を使っている場合は、pom.xmlに以下のように依存性を追加します。
+	
+--------------------------------------------------------------------------------
+[pom.xml]
+  <dependencies>
+    <dependency>
+      <groupId>org.seasar.domainmodel</groupId>
+      <artifactId>s2-domainmodel</artifactId>
+      <version>0.1.1</version>
+    </dependency>
+  </dependencies>
+  ...
+  <repositories>
+    <repository>
+      <id>maven.seasar.org</id>
+      <name>The Seasar Foundation Maven2 Repository</name>
+      <url>http://maven.seasar.org/maven2</url>
+    </repository>
+  </repositories>
+--------------------------------------------------------------------------------

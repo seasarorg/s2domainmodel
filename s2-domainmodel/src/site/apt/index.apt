@@ -1,33 +1,17 @@
-	----------
-	Top
-	----------
+	-----------------
+	S2DomainModelとは
+	-----------------
 
-S2DomainModel
+S2DomainModelとは
 
 	S2DomainModelは、Seasar2でドメインモデルやDDDの実装をサポートするためのライブラリです。
 	
+	DIコンテナを使った開発では、ドメインモデルの中で直接生成されるドメインオブジェクト（= Entity + Logic）に他のオブジェクトをDIすることは設計上難しく、ドメインモデルの自由な設計が阻害されてしまいます（記事「{{{http://ameblo.jp/ouobpo/entry-10094308786.html}DIコンテナとドメインモデルの相性の悪さ}}」参照）。そのため、リッチなドメインモデルは敬遠されがちです。
+	
+	S2DomainModelは、この相性問題を解決するためのライブラリです。ドメインオブジェクトにDIできる仕組みを提供することで、DIコンテナを使った、より自由なドメインモデル構築を可能にします。
+	
 	ダウンロードはこちらから↓
 	
-	* {{http://sourceforge.net/project/showfiles.php?group_id=202205&package_id=275007}}
+	* {{http://maven.seasar.org/maven2/org/seasar/domainmodel/s2-domainmodel/}}
 	
-* 使い方
-	
-	Maven2を使っている場合は、pom.xmlに以下のように依存性を追加します。
-	
---------------------------------------------------------------------------------
-[pom.xml]
-  <repositories>
-    <repository>
-      <id>ouobpo.sourceforge.net</id>
-      <url>http://ouobpo.sourceforge.net/maven/</url>
-    </repository>
-  </repositories>
-  ...
-  <dependencies>
-    <dependency>
-      <groupId>org.seasar.domainmodel</groupId>
-      <artifactId>s2-domainmodel</artifactId>
-      <version>0.1</version>
-    </dependency>
-  </dependencies>
---------------------------------------------------------------------------------
+	[]
